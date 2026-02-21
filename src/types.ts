@@ -29,12 +29,62 @@ export interface NestOptions {
   rules?: RulesOverride;
 }
 
+export interface ReactA11yOptions {
+  // TODO: typed map of eslint-plugin-jsx-a11y rule overrides
+  rules?: RulesOverride;
+}
+
+export interface ReactI18nOptions {
+  /**
+   * JSX attributes to ignore for the no-literal-string rule.
+   * Default: ['to', 'as', 'name', 'data-testid', 'target', 'direction', 'justify', 'align', 'gap', 'border']
+   */
+  ignoreAttribute?: string[];
+  // TODO: typed map of eslint-plugin-i18next rule overrides
+  rules?: RulesOverride;
+}
+
+export interface ReactStorybookOptions {
+  // TODO: typed map of eslint-plugin-storybook rule overrides
+  rules?: RulesOverride;
+}
+
+export interface ReactComponentNameOptions {
+  /**
+   * Component wrappers to enforce display names on.
+   * Default: ['memo', 'forwardRef', 'observer']
+   */
+  targets?: string[];
+  // TODO: typed map of eslint-plugin-react-component-name rule overrides
+  rules?: RulesOverride;
+}
+
 export interface ReactOptions {
   /**
    * React version passed to eslint-plugin-react settings.
    * Default: 'detect'
    */
   version?: string;
+  /**
+   * Enable jsx-a11y accessibility rules.
+   * Default: auto-detect (eslint-plugin-jsx-a11y in node_modules)
+   */
+  a11y?: boolean | ReactA11yOptions;
+  /**
+   * Enable i18next rules (no literal strings in JSX).
+   * Default: auto-detect (eslint-plugin-i18next in node_modules)
+   */
+  i18n?: boolean | ReactI18nOptions;
+  /**
+   * Enable Storybook rules.
+   * Default: auto-detect (eslint-plugin-storybook in node_modules)
+   */
+  storybook?: boolean | ReactStorybookOptions;
+  /**
+   * Enforce display names on memo/forwardRef/observer components.
+   * Default: auto-detect (eslint-plugin-react-component-name in node_modules)
+   */
+  componentName?: boolean | ReactComponentNameOptions;
   // TODO: typed map of eslint-plugin-react + react-hooks rule overrides
   rules?: RulesOverride;
 }
