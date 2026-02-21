@@ -1,7 +1,7 @@
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import type { Linter } from 'eslint';
 
-import type { StylisticOptions } from '../types';
+import type { StylisticOptions } from '../../types';
 
 export function stylisticConfigs(options: StylisticOptions): Linter.Config[] {
   const { rules } = options;

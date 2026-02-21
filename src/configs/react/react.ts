@@ -2,8 +2,8 @@ import type { Linter } from 'eslint';
 import globals from 'globals';
 import { isPackageExists } from 'local-pkg';
 
-import type { ReactOptions } from '../types';
-import { importPlugin, resolve } from '../utils';
+import type { ReactOptions } from '../../types';
+import { importPlugin, resolve } from '../../utils';
 
 const DEFAULT_I18N_IGNORE_ATTRIBUTES = [
   'to',

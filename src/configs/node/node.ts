@@ -1,7 +1,7 @@
 import type { Linter } from 'eslint';
 import globals from 'globals';
 
-import type { NodeOptions } from '../types';
+import type { NodeOptions } from '../../types';
 
 export function nodeConfigs(options: NodeOptions): Linter.Config[] {
   const { rules } = options;

@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint';
 
-import type { NestOptions } from '../types';
+import type { NestOptions } from '../../types';
 
 export function nestConfigs(
   options: NestOptions,

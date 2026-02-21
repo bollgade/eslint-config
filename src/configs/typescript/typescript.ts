@@ -4,7 +4,7 @@ import {
   configs as tseslintConfigs,
 } from 'typescript-eslint';
 
-import type { TypescriptOptions } from '../types';
+import type { TypescriptOptions } from '../../types';
 
 export function typescriptConfigs(options: TypescriptOptions): Linter.Config[] {
   const { tsconfigPath, strictTypeChecked = true, rules } = options;

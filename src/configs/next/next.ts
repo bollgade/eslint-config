@@ -1,7 +1,7 @@
 import type { Linter } from 'eslint';
 
-import type { NextOptions } from '../types';
-import { importPlugin } from '../utils';
+import type { NextOptions } from '../../types';
+import { importPlugin } from '../../utils';
 
 export async function nextConfigs(
   options: NextOptions,

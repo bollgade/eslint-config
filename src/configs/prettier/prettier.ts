@@ -1,7 +1,7 @@
 import type { Linter } from 'eslint';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
-import type { PrettierOptions } from '../types';
+import type { PrettierOptions } from '../../types';
 
 export function prettierConfigs(options: PrettierOptions): Linter.Config[] {
   const { rules } = options;

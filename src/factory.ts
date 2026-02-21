@@ -1,15 +1,15 @@
 import type { Linter } from 'eslint';
 import { isPackageExists } from 'local-pkg';
 
-import { baseConfigs } from './configs/base';
-import { importsConfigs } from './configs/imports';
-import { nestConfigs } from './configs/nest';
-import { nextConfigs } from './configs/next';
-import { nodeConfigs } from './configs/node';
-import { prettierConfigs } from './configs/prettier';
-import { reactConfigs } from './configs/react';
-import { stylisticConfigs } from './configs/stylistic';
-import { typescriptConfigs } from './configs/typescript';
+import { baseConfigs } from './configs/base/base';
+import { importsConfigs } from './configs/imports/imports';
+import { nestConfigs } from './configs/nest/nest';
+import { nextConfigs } from './configs/next/next';
+import { nodeConfigs } from './configs/node/node';
+import { prettierConfigs } from './configs/prettier/prettier';
+import { reactConfigs } from './configs/react/react';
+import { stylisticConfigs } from './configs/stylistic/stylistic';
+import { typescriptConfigs } from './configs/typescript/typescript';
 import type { ConfigOptions, NodeOptions, ReactOptions } from './types';
 import { resolve } from './utils';
 

@@ -2,7 +2,7 @@ import type { Linter } from 'eslint';
 import { flatConfigs as importPluginFlat } from 'eslint-plugin-import';
 import eslintPluginUnusedImports from 'eslint-plugin-unused-imports';
 
-import type { ImportsOptions } from '../types';
+import type { ImportsOptions } from '../../types';
 
 export function importsConfigs(
   options: ImportsOptions,
