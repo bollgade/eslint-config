@@ -1,6 +1,11 @@
 import type { Linter } from 'eslint';
 import { isPackageExists } from 'local-pkg';
 
+import { baseConfigs } from './configs/base';
+import { importsConfigs } from './configs/imports';
+import { prettierConfigs } from './configs/prettier';
+import { stylisticConfigs } from './configs/stylistic';
+import { typescriptConfigs } from './configs/typescript';
 import type { ConfigOptions } from './types';
 
 /**
@@ -32,18 +37,18 @@ export async function createConfig(
   // next implies react
   const next = resolve(options.next, isPackageExists('next'));
 
-  const configs: Linter.Config[] = [];
+  const configs: Linter.Config[] = [
+    ...baseConfigs(),
+    ...(typescript ? typescriptConfigs(typescript) : []),
+    ...(stylistic ? stylisticConfigs(stylistic) : []),
+    ...(imports ? importsConfigs(imports, typescript !== false) : []),
+    ...(prettier ? prettierConfigs(prettier) : []),
+    // TODO (Phase 3): node / nest layer
+    // TODO (Phase 4): react layer
+    // TODO (Phase 5): next layer
+  ];
 
-  // TODO (Phase 2): base JS rules + language options
-  // TODO (Phase 2): typescript layer
-  // TODO (Phase 2): stylistic layer
-  // TODO (Phase 2): imports layer
-  // TODO (Phase 2): prettier layer
-  // TODO (Phase 3): node / nest layer
-  // TODO (Phase 4): react layer
-  // TODO (Phase 5): next layer
-
-  void [typescript, node, prettier, stylistic, imports, nest, react, next];
+  void [node, nest, react, next];
 
   return configs;
 }
