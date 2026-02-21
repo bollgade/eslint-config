@@ -21,7 +21,7 @@ export async function nextConfigs(
   const pluginConfigs = pluginNext.configs as
     | Record<string, { rules?: Linter.RulesRecord }>
     | undefined;
-  const recommendedRules = pluginConfigs?.recommended?.rules ?? {};
+  const recommendedRules = pluginConfigs?.recommended.rules ?? {};
 
   const configs: Linter.Config[] = [
     {

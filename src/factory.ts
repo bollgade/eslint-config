@@ -4,9 +4,9 @@ import { isPackageExists } from 'local-pkg';
 import { baseConfigs } from './configs/base';
 import { importsConfigs } from './configs/imports';
 import { nestConfigs } from './configs/nest';
+import { nextConfigs } from './configs/next';
 import { nodeConfigs } from './configs/node';
 import { prettierConfigs } from './configs/prettier';
-import { nextConfigs } from './configs/next';
 import { reactConfigs } from './configs/react';
 import { stylisticConfigs } from './configs/stylistic';
 import { typescriptConfigs } from './configs/typescript';
@@ -41,7 +41,9 @@ export async function createConfig(
     ...(prettier ? prettierConfigs(prettier) : []),
     ...(effectiveNode !== false ? nodeConfigs(effectiveNode) : []),
     ...(nest ? nestConfigs(nest, typescript !== false) : []),
-    ...(effectiveReact ? await reactConfigs(effectiveReact, typescript !== false) : []),
+    ...(effectiveReact
+      ? await reactConfigs(effectiveReact, typescript !== false)
+      : []),
     ...(next ? await nextConfigs(next) : []),
   ];
 

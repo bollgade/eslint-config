@@ -17,9 +17,7 @@ export function getMergedRules(
 
 /** Collect all global variable names from a flat config array */
 export function getGlobalNames(configs: Linter.Config[]): string[] {
-  return configs.flatMap((c) =>
-    Object.keys(c.languageOptions?.globals ?? {}),
-  );
+  return configs.flatMap((c) => Object.keys(c.languageOptions?.globals ?? {}));
 }
 
 /** Collect global ignore patterns (config objects with ignores but no files) */

@@ -20,9 +20,13 @@ export function resolve<T extends object>(
  * Dynamically imports an ESLint plugin by package name.
  * Returns null if the package is not installed (optionalDependency pattern).
  */
-export async function importPlugin(name: string): Promise<ESLint.Plugin | null> {
+export async function importPlugin(
+  name: string,
+): Promise<ESLint.Plugin | null> {
   try {
-    const mod = (await import(name)) as { default?: ESLint.Plugin } & ESLint.Plugin;
+    const mod = (await import(name)) as {
+      default?: ESLint.Plugin;
+    } & ESLint.Plugin;
     return mod.default ?? mod;
   } catch {
     return null;

@@ -1,15 +1,19 @@
 import { describe, expect, it } from 'vitest';
 
-import { createConfig } from '../src/index';
 import {
   getGlobalNames,
   getIgnorePatterns,
   getMergedRules,
   getPluginNames,
 } from './helpers';
+import { createConfig } from '../src/index';
 
 // Disable framework auto-detection in all tests — only test what we explicitly enable
-const NO_FRAMEWORKS = { react: false as const, next: false as const, nest: false as const };
+const NO_FRAMEWORKS = {
+  react: false as const,
+  next: false as const,
+  nest: false as const,
+};
 
 describe('createConfig()', () => {
   it('returns a non-empty array', async () => {
@@ -42,9 +46,14 @@ describe('createConfig()', () => {
     });
 
     it('excludes @typescript-eslint rules when typescript: false', async () => {
-      const config = await createConfig({ ...NO_FRAMEWORKS, typescript: false });
+      const config = await createConfig({
+        ...NO_FRAMEWORKS,
+        typescript: false,
+      });
       const rules = getMergedRules(config);
-      expect(rules).not.toHaveProperty('@typescript-eslint/no-floating-promises');
+      expect(rules).not.toHaveProperty(
+        '@typescript-eslint/no-floating-promises',
+      );
     });
 
     it('uses strictTypeChecked preset by default', async () => {
@@ -65,7 +74,9 @@ describe('createConfig()', () => {
     it('accepts rules override', async () => {
       const config = await createConfig({
         ...NO_FRAMEWORKS,
-        typescript: { rules: { '@typescript-eslint/no-floating-promises': 'error' } },
+        typescript: {
+          rules: { '@typescript-eslint/no-floating-promises': 'error' },
+        },
       });
       const rules = getMergedRules(config);
       expect(rules['@typescript-eslint/no-floating-promises']).toBe('error');
@@ -137,13 +148,24 @@ describe('createConfig()', () => {
 
   describe('nest implies node', () => {
     it('adds Node.js globals when nest: true even if node: false', async () => {
-      const config = await createConfig({ react: false, next: false, nest: true, node: false });
+      const config = await createConfig({
+        react: false,
+        next: false,
+        nest: true,
+        node: false,
+      });
       expect(getGlobalNames(config)).toContain('process');
     });
 
     it('disables @typescript-eslint/no-extraneous-class when nest: true', async () => {
-      const config = await createConfig({ react: false, next: false, nest: true });
-      expect(getMergedRules(config)['@typescript-eslint/no-extraneous-class']).toBe('off');
+      const config = await createConfig({
+        react: false,
+        next: false,
+        nest: true,
+      });
+      expect(
+        getMergedRules(config)['@typescript-eslint/no-extraneous-class'],
+      ).toBe('off');
     });
 
     it('does not add @typescript-eslint rules from nest when typescript: false', async () => {
@@ -164,17 +186,29 @@ describe('createConfig()', () => {
 
   describe('react', () => {
     it('adds browser globals when react: true', async () => {
-      const config = await createConfig({ next: false, nest: false, react: true });
+      const config = await createConfig({
+        next: false,
+        nest: false,
+        react: true,
+      });
       expect(getGlobalNames(config)).toContain('window');
     });
 
     it('registers react plugin when react: true', async () => {
-      const config = await createConfig({ next: false, nest: false, react: true });
+      const config = await createConfig({
+        next: false,
+        nest: false,
+        react: true,
+      });
       expect(getPluginNames(config)).toContain('react');
     });
 
     it('includes react/react-in-jsx-scope: off when react: true', async () => {
-      const config = await createConfig({ next: false, nest: false, react: true });
+      const config = await createConfig({
+        next: false,
+        nest: false,
+        react: true,
+      });
       expect(getMergedRules(config)['react/react-in-jsx-scope']).toBe('off');
     });
 
@@ -188,12 +222,20 @@ describe('createConfig()', () => {
 
   describe('next implies react', () => {
     it('registers react plugin when next: true even if react: false', async () => {
-      const config = await createConfig({ nest: false, next: true, react: false });
+      const config = await createConfig({
+        nest: false,
+        next: true,
+        react: false,
+      });
       expect(getPluginNames(config)).toContain('react');
     });
 
     it('registers @next/next plugin when next: true', async () => {
-      const config = await createConfig({ nest: false, next: true, react: false });
+      const config = await createConfig({
+        nest: false,
+        next: true,
+        react: false,
+      });
       expect(getPluginNames(config)).toContain('@next/next');
     });
   });

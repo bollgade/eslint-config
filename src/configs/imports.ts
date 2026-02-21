@@ -50,19 +50,16 @@ export function importsConfigs(
   ];
 
   if (hasTypescript) {
-    configs.push(
-      importPluginFlat.typescript,
-      {
-        files: ['**/*.{ts,tsx}'],
-        settings: {
-          'import/resolver': {
-            typescript: {
-              alwaysTryTypes: true,
-            },
+    configs.push(importPluginFlat.typescript, {
+      files: ['**/*.{ts,tsx}'],
+      settings: {
+        'import/resolver': {
+          typescript: {
+            alwaysTryTypes: true,
           },
         },
       },
-    );
+    });
   }
 
   if (rules) {

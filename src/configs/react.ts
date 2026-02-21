@@ -2,13 +2,7 @@ import type { Linter } from 'eslint';
 import globals from 'globals';
 import { isPackageExists } from 'local-pkg';
 
-import type {
-  ReactA11yOptions,
-  ReactComponentNameOptions,
-  ReactI18nOptions,
-  ReactOptions,
-  ReactStorybookOptions,
-} from '../types';
+import type { ReactOptions } from '../types';
 import { importPlugin, resolve } from '../utils';
 
 const DEFAULT_I18N_IGNORE_ATTRIBUTES = [
@@ -30,30 +24,21 @@ export async function reactConfigs(
   options: ReactOptions,
   hasTypescript: boolean,
 ): Promise<Linter.Config[]> {
-  const {
-    version = 'detect',
-    rules,
-  } = options;
+  const { version = 'detect', rules } = options;
 
-  const a11y = resolve(
-    options.a11y,
-    isPackageExists('eslint-plugin-jsx-a11y'),
-  ) as ReactA11yOptions | false;
+  const a11y = resolve(options.a11y, isPackageExists('eslint-plugin-jsx-a11y'));
 
-  const i18n = resolve(
-    options.i18n,
-    isPackageExists('eslint-plugin-i18next'),
-  ) as ReactI18nOptions | false;
+  const i18n = resolve(options.i18n, isPackageExists('eslint-plugin-i18next'));
 
   const storybook = resolve(
     options.storybook,
     isPackageExists('eslint-plugin-storybook'),
-  ) as ReactStorybookOptions | false;
+  );
 
   const componentName = resolve(
     options.componentName,
     isPackageExists('eslint-plugin-react-component-name'),
-  ) as ReactComponentNameOptions | false;
+  );
 
   // Core plugins — required when react is enabled
   const [pluginReact, pluginReactHooks] = await Promise.all([
@@ -189,16 +174,12 @@ export async function reactConfigs(
       'eslint-plugin-react-component-name',
     );
     if (pluginComponentName) {
-      const targets =
-        componentName.targets ?? DEFAULT_COMPONENT_NAME_TARGETS;
+      const targets = componentName.targets ?? DEFAULT_COMPONENT_NAME_TARGETS;
 
       configs.push({
         plugins: { 'react-component-name': pluginComponentName },
         rules: {
-          'react-component-name/react-component-name': [
-            'error',
-            { targets },
-          ],
+          'react-component-name/react-component-name': ['error', { targets }],
           ...(componentName.rules ?? {}),
         },
       });
