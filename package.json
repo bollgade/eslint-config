@@ -1,6 +1,6 @@
 {
   "name": "@bollgade/eslint-config",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "One-stop ESLint flat config for TypeScript, Node, NestJS, React, and Next.js",
   "license": "MIT",
   "type": "module",
@@ -32,7 +32,9 @@
     "prepublishOnly": "npm run build",
     "lint:ts": "eslint \"**/*.{ts,tsx}\" --max-warnings=0",
     "lint:ts:fix": "npm run lint:ts -- --fix",
-    "type-check": "tsc --project ./tsconfig.json --noEmit"
+    "type-check": "tsc --project ./tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "repository": {
     "type": "git",
@@ -49,6 +51,7 @@
   "dependencies": {
     "@eslint/js": "^9.18.0",
     "@stylistic/eslint-plugin": "^5.2.3",
+    "eslint-config-prettier": "10.1.8",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.4",
@@ -59,8 +62,8 @@
   },
   "optionalDependencies": {
     "@next/eslint-plugin-next": "^15.0.0",
-    "eslint-plugin-jsx-a11y": "^6.10.0",
     "eslint-plugin-i18next": "^6.1.0",
+    "eslint-plugin-jsx-a11y": "^6.10.0",
     "eslint-plugin-react": "^7.37.0",
     "eslint-plugin-react-component-name": "^2.0.0",
     "eslint-plugin-react-hooks": "^5.1.0",
@@ -69,8 +72,10 @@
   "devDependencies": {
     "@types/node": "^22.10.7",
     "eslint": "^9.18.0",
+    "jiti": "2.6.1",
     "tsup": "^8.5.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^3.0.0"
   },
   "engines": {
     "node": ">=18.18.0"

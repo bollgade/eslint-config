@@ -27,9 +27,9 @@
   },
   "include": [
     "eslint.config.mts",
+    "vitest.config.ts",
     "./src/**/*.ts",
-    "./**/*.test.ts",
-    "./**/*.spec.ts"
+    "./tests/**/*.ts"
   ],
   "exclude": ["node_modules", "dist", "build"]
 }
