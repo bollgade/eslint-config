@@ -1,0 +1,12 @@
+.gitignore
+README.md
+*.md
+node_modules/
+.nyc_output/
+coverage/
+src/
+eslint.config.mts
+tsconfig.json
+*.log
+.DS_Store
+dist/*.map
