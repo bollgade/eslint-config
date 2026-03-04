@@ -216,3 +216,11 @@ createConfig({
 
 - `nest: true` → always adds Node.js globals (even if `node: false`)
 - `next: true` → always adds React layer (even if `react: false`)
+
+---
+
+## Roadmap
+
+- [ ] **Typed rules** — fully typed `rules` overrides per plugin (currently `Partial<Linter.RulesRecord>`)
+- [ ] **`projectService` support** — alternative to `tsconfigPath` in `TypescriptOptions` for monorepos
+- [ ] **Separate test layer** — dedicated `test` option with Jest/Vitest globals instead of bundling them in `node`
