@@ -42,6 +42,9 @@
   },
   "bugs": "https://github.com/bollgade/eslint-config/issues",
   "homepage": "https://github.com/bollgade/eslint-config#readme",
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public"
   },
