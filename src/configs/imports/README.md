@@ -36,6 +36,7 @@ import { formatDate } from './utils';
 | `unused-imports/no-unused-imports` | error |
 | `import/order` | error (alphabetized, see above) |
 | `import/no-extraneous-dependencies` | error |
+| `import/no-unresolved` | error (ignores `eslint/*` subpath exports) |
 | `import/extensions` | off |
 | `import/prefer-default-export` | off |
 
@@ -50,8 +51,9 @@ The following file patterns may import `devDependencies` without error:
 
 - `**/*.config.{ts,js}`
 - `**/eslint.config.*`
-- `**/*.{test,spec}.{ts,js}`
-- `**/{tests,__tests__,test,config}/**/*.{ts,js}`
+- `**/*.{test,spec,stories}.{ts,tsx,js}`
+- `**/{tests,__tests__,test,stories,config}/**/*.{ts,tsx,js}`
+- `**/scripts/**/*.{ts,tsx,js}`
 
 ## Disabling
 
